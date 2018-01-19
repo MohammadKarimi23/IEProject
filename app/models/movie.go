@@ -1,4 +1,4 @@
-package main
+package models
 
 type Movie struct {
 	Id            int64  `db:"id"`
