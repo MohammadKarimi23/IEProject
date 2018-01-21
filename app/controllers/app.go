@@ -69,6 +69,30 @@ func (c Application) GetRecentMovies(limit int) revel.Result {
 	return c.RenderJSON(movies)
 }
 
+func (c Application) SubmitComment(id int) revel.Result {
+	var comment models.Comment
+	c.Params.BindJSON(&comment)
+	comment.CreatedAt = time.Now().UnixNano()
+	comment.MovieId = int64(id)
+	if err := c.Txn.Insert(&comment); err != nil {
+		return c.RenderText(
+			"Error inserting record into database!")
+	} else {
+		return c.RenderJSON(comment)
+	}
+}
+
+func (c Application) GetComments(id int) revel.Result {
+	comments, err := c.Txn.Select(models.Comment{},
+		`SELECT * FROM Comment WHERE movie_id = ? order by created_at desc`, id)
+	if err != nil {
+		return c.RenderText(
+			err.Error())
+	}
+	return c.RenderJSON(comments)
+
+}
+
 func (c Application) getMovieById(id int) *models.Movie {
 	m, err := c.Txn.Get(models.Movie{}, id)
 	if err != nil {
