@@ -6,10 +6,24 @@ import (
 	//"github.com/moolica/IEProject/app/routes"
 
 	"github.com/revel/revel"
+	"time"
 )
 
 type Application struct {
 	GorpController
+}
+
+func (c Application) Submit() revel.Result {
+	var movie models.Movie
+	c.Params.BindJSON(&movie)
+	movie.CreatedAt = time.Now().UnixNano()
+
+	if err := c.Txn.Insert(&movie); err != nil {
+		return c.RenderText(
+			"Error inserting record into database!")
+	} else {
+		return c.RenderJSON(movie)
+	}
 }
 
 func (c Application) Index() revel.Result {
