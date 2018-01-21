@@ -48,6 +48,17 @@ func (c Application) Index() revel.Result {
 	*/
 }
 
+func (c Application) GetMovieDetails(id int) revel.Result {
+	movie := new(models.Movie)
+	err := c.Txn.SelectOne(movie,
+		`SELECT * FROM Movie WHERE id = ?`, id)
+	if err != nil {
+		return c.RenderText("Error.  Item probably doesn't exist.")
+	}
+	return c.RenderJSON(movie)
+
+}
+
 func (c Application) GetRecentMovies(limit int) revel.Result {
 	movies, err := c.Txn.Select(models.Movie{},
 		`SELECT * FROM Movie order by created_at desc limit ?`, limit)
