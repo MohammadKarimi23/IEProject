@@ -103,3 +103,13 @@ func (c Application) getMovieById(id int) *models.Movie {
 	}
 	return m.(*models.Movie)
 }
+
+func (c Application) Search(title string) revel.Result {
+	movies, err := c.Txn.Select(models.Movie{},
+		`SELECT * FROM Movie where title = ? order by created_at desc`, title)
+	if err != nil {
+		return c.RenderText(
+			err.Error())
+	}
+	return c.RenderJSON(movies)
+}
