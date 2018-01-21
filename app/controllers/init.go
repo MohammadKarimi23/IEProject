@@ -12,6 +12,9 @@ import (
 
 func init() {
 	revel.OnAppStart(InitDb)
+	revel.InterceptMethod((*GorpController).Begin, revel.BEFORE)
+	revel.InterceptMethod((*GorpController).Commit, revel.AFTER)
+	revel.InterceptMethod((*GorpController).Rollback, revel.FINALLY)
 }
 
 func getParamString(param string, defaultValue string) string {
@@ -44,7 +47,7 @@ func getConnectionString() string {
 		user, pass, protocol, host, port, dbname, dbargs)
 }
 
-var InitDb func() = func() {
+/*var InitDb func() = func() {
 	connectionString := getConnectionString()
 	if db, err := sql.Open("mysql", connectionString); err != nil {
 		revel.ERROR.Fatal(err)
@@ -61,6 +64,24 @@ var InitDb func() = func() {
 			revel.ERROR.Fatal(err)
 		}
 
+	}
+}*/
+
+var InitDb func() = func() {
+	connectionString := getConnectionString()
+	if db, err := sql.Open("mysql", connectionString); err != nil {
+		revel.ERROR.Fatal(err)
+	} else {
+		Dbm = &gorp.DbMap{
+			Db:      db,
+			Dialect: gorp.MySQLDialect{"InnoDB", "UTF8"}}
+	}
+	// Defines the table for use by GORP
+	// This is a function we will create soon.
+	defineMovieTable(Dbm)
+	defineCommentTable(Dbm)
+	if err := Dbm.CreateTablesIfNotExists(); err != nil {
+		revel.ERROR.Fatal(err)
 	}
 }
 
