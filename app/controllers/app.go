@@ -27,13 +27,6 @@ func (c Application) Submit() revel.Result {
 }
 
 func (c Application) Index() revel.Result {
-	//success, err := c.Txn.Delete(&models.Movie{Id: 1})
-	//if err != nil || success == 0 {
-	//	return c.RenderText("Failed to remove BidItem")
-	//}
-	//return c.RenderText("Deleted %v", 1)
-	//	err := c.Txn.SelectOne(movie,
-	//		`SELECT * FROM movie WHERE id = ?`, id)
 	count, err := c.Txn.SelectStr("select title from Movie where id=?", 2)
 	if err != nil {
 		return c.RenderText(err.Error())
@@ -53,6 +46,16 @@ func (c Application) Index() revel.Result {
 		}
 		return c.Render(movie.Title)
 	*/
+}
+
+func (c Application) GetRecentMovies(limit int) revel.Result {
+	movies, err := c.Txn.Select(models.Movie{},
+		`SELECT * FROM Movie order by created_at desc limit ?`, limit)
+	if err != nil {
+		return c.RenderText(
+			err.Error())
+	}
+	return c.RenderJSON(movies)
 }
 
 func (c Application) getMovieById(id int) *models.Movie {
