@@ -1,0 +1,162 @@
+p {
+  margin: 0 0 10px;
+}
+
+.download-tab a {
+  color: black !important;
+}
+
+.download-main {
+  margin-top: 30px;
+}
+
+.score-panel {
+  float: right;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 0;
+  padding-bottom: 45px;
+  padding-top: 50px;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+}
+
+.rangeItem {
+  float: right;
+  width: 100%;
+}
+
+
+.rangeItem p {
+  font-family: 'Shabnam', sans-serif;
+  text-align: right;
+  direction: rtl;
+  color: #ccc;
+  font-size: 16px;
+
+}
+
+
+
+.big-sign {
+  text-align: center;
+  font-size: 17px;
+}
+
+.blue-sign {
+  color: blue;
+}
+
+.gray-sign {
+  color: #ccc;
+}
+
+.viewer-suggestion {
+  padding: 20px;
+}
+
+
+/*.viewer-suggestion p {
+  font-family: 'Shabnam', sans-serif;
+  text-align: right;
+  direction: rtl;
+  color: blue;
+  font-size: 16px;
+
+}*/
+
+.rating-soliders {
+  padding-top: 20px;
+  padding: 5px 15px;
+  clear: both;
+}
+
+.slidecontainer {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 10px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 10px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+
+.submitScore {
+  padding: 20px;
+  text-align: center;
+}
+
+.submitScore button {
+  margin-top: 10px;
+}
+
+.selector-array {
+  margin-top: 50px;
+  float: right;
+}
+
+.view-selector {
+  margin: 46px 20%;
+}
+
+.view-selector i {
+  border: 2px solid gray;
+  padding: 5px;
+  border-radius: 10px;
+  color: gray;
+  margin-left: 20px;
+}
+
+.view-selector i:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.view-selector p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.download-bar-header {
+  margin: 10px 0 ;
+  max-width: 990px;
+  margin-right: auto;
+  margin-left: auto;
+  border-bottom: 2px solid #3a6ee8;
+  color: #3a6ee8;
+  font-weight: 700;
+}
+
+.download-bar-header span {
+  font-size: 16px;
+  border-bottom: 3px solid #3a6ee8;
+    padding-bottom: 6px;
+    display: inline-block;
+    font-family: iranyekan,IRANsans,roboto,Arial;
+}

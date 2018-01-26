@@ -13,6 +13,10 @@ type Application struct {
 	GorpController
 }
 
+func (c Application) Download() revel.Result {
+	return c.Render()
+}
+
 func (c Application) Submit() revel.Result {
 	var movie models.Movie
 	c.Params.BindJSON(&movie)
