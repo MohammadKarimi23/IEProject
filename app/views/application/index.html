@@ -3,171 +3,172 @@
 
   {{template "site-header.html" .}}
 
-<main class="main">
-</main>
+   <!-- top search area -->
+  <div id="toparea" class="row nopad">
+    <div class="wrapper">
+      <img src="/public/img/startwars.jpg" class="img-responsive"/>
+    </div>
+    <div class="caption">
+      <p>
+             دانلود فیلم، سریال، انیمیشن، مستند و دوبله با 13256 عنوان
+      </p>
+      <div class="form-group">
+        <circle-button color=”green” icon =”fa-search” @click=”” />
+        <input type="text" class="form-control" id="search" placeholder="جستجوی فیلم، سریال، بازیگر، کارگردان و ...">
+        <button type="button" class="btn btn-warning submitsearch" >جستجو</button>
+      </div>
+    </div>
+  </div>
+    <!-- end top search area -->
 
+    <!-- slider -->
+    <div id="slider" class="row">
+      <div class="wrapper">
+        <div class="areaheader">
+          <div class="areatitle">
+              جدیدترین عناوین
+          </div>
 
-     <footer class="site-footer">
+          <div class="items">
+             <a href="#" >همه</a>
+             <a href="#"  class="selected">فیلم سینمایی</a>
+             <a href="#">انیمیشن</a>
+             <a href="#">مستند</a>
+             <a href="#">دوبله</a>
+          </div>
+        </div>
 
-       <div> <!-- second header-->
-         <ul class="kiresag">
-           <li class = "kiresag persian"><a href="#home">ممد</a></li>
-           <li class = "kiresag persian"><a href="#news">اکبر</a></li>
-           <li class = "kiresag persian"><a href="#contact">اصغر</a></li>
-           <li class = "kiresag persian"><a href="#contact">اصغر</a></li>
-           <li class = "kiresag persian"><a href="#contact">اصغر</a></li>
-           <li class = "kiresag persian"><a href="#contact">اصغر</a></li>
-           <li class = "kiresag persian"><a href="#contact">اصغر</a></li>
-         </ul>
-       </div>
-       <div class="container">
-         <div class="right-footer col-sm-4 col-xs-12">
-           <div class="content-box persian">
-             محتوای این سایت متناسب با خانواده های
-             فلانی ایرانی میباشد
-           </div>
-           <div class="social-media">
-             <a href="#">
-               <img src="http://iranfilm.info/wp-content/themes/iranfilm_clean/images/google.svg" alt="google">
-             </a>
-             <a class="instagram" href="https://www.instagram.com/iranfilms">
-               <i class="fa fa-instagram" aria-hidden="true"></i>
-             </a>
-              <a href="https://telegram.me/iranfilm">
-                <img src="http://iranfilm.info/wp-content/themes/iranfilm_clean/images/Telegram.svg" alt="Telegram">
-              </a>
-              <a href="https://twitter.com/iranfilms">
-                <img src="http://iranfilm.info/wp-content/themes/iranfilm_clean/images/twitter.svg" alt="twitter">
-              </a>
-           </div>
-         </div>
-         <div class="left-footer persian col-sm-8 col-xs-12">
-           این سایت برای پروژه فلانی درس مهندسی فلانی اینترنت میباشد که توسط استادی به غایت فلانی که از تکنولوژی فلانی دات فلان استفاده میکند طراحی
-           شده و هیچ هدفی جز رهایی از این فلاندونی ندارد.
-         </div>
-       </div>
+        <div class="owl-nav left">
+          <div class="owl-prev customNextBtn navbtn"><i class="fa fa-chevron-circle-left"></i></div>
+        </div>
+        <div class="carousel">
 
-       <div class="container bottom persian">
-         این سایت متعلق به دانشکده تخمی دانشگاه فلانی امیرکبیر میباشد
-       </div>
-     </footer>
+            <div class="owl-carousel owl-theme owl-rtl">
 
-     <!-- Modal -->
-       <div class="modal add-modal fade in" id="login" role="dialog">
-         <div class="modal-dialog">
-           <!-- Modal content-->
-           <div class="modal-content">
-             <div class="modal-header modalHeader">
-               <button type="button" class="close" data-dismiss="modal">&times;</button>
-             </div>
-             <div class="modalTabs">
-               <ul class="nav nav-tabs nav-justified">
-                 <li class="active persian">
-                   <a data-toggle="tab" href="#signUpTab">عضویت</a>
-                 </li>
-                 <li><a class="persian" data-toggle="tab" href="#loginTab">ورود</a></li>
-               </ul>
-             </div>
-             <div class="tab-content">
-
-               <div id="loginTab" class="modalTab tab-pane fade in">
-                 <form class="form-horizontal" action="/action_page.php">
-                   <div class="form-group required">
-                     <label class="control-label col-sm-3 persian" for="email">ایمیل</label>
-                     <div class="col-sm-9">
-                       <input type="email" class="form-control modalInput persian" id="email" placeholder="ایمیل" name="email">
-                     </div>
-                   </div>
-                   <div class="form-group required">
-                     <label class="control-label col-sm-3 persian" for="pwd">رمز عبور</label>
-                     <div class="col-sm-9">
-                       <input type="password" class="form-control modalInput persian" id="pwd" placeholder="رمز عبور" name="pwd">
-                     </div>
-                   </div>
-                   <div class="form-group required">
-                     <label class="control-label col-sm-3 persian" for="repass">تکرار رمز عبور</label>
-                     <div class="col-sm-9">
-                       <input type="password" class="form-control modalInput persian" id="repas" placeholder="تکرار رمز عبور" name="repass">
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <label class="control-label col-sm-3 persian" for="invitation">کد دعوت</label>
-                     <div class="col-sm-9">
-                       <input type="password" class="form-control modalInput persian" id="invitation" placeholder="کد دعوت" name="repass">
-                     </div>
-                   </div>
-                   <div class="form-group required">
-                     <label class="control-label col-sm-3 persian" for="captcha">کد امنیتی</label>
-                     <div class="col-sm-9">
-                       <input type="password" class="form-control modalInput persian" id="captcha" placeholder="کد امنیتی" name="repass">
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <div class="col-sm-offset-3 col-sm-10">
-                       <div class="checkbox persian">
-                         <label><input type="checkbox" name="remember">قوانین را مطالعه کردم و میپذیرم</label>
-                       </div>
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <div class="sign-up-button">
-                       <button type="button persian" class="btn btn-primary">عضویت</button>
-                     </div>
-                   </div>
-                 </form>
-
-                </div>
-               <div id="signUpTab" class="tab-pane fade in active">
-
-                 <div id="loginTab" class="modalTab tab-pane fade in">
-                   <form class="form-horizontal" action="/action_page.php">
-                     <div class="form-group required">
-                       <label class="control-label col-sm-3 persian" for="username">شناسه ورود</label>
-                       <div class="col-sm-9">
-                         <input type="password" class="form-control modalInput persian" id="username" placeholder="شناسه ورود" name="pwd">
-                       </div>
-                     </div>
-                     <div class="form-group required">
-                       <label class="control-label col-sm-3 persian" for="pwd">رمز عبور</label>
-                       <div class="col-sm-9">
-                         <input type="password" class="form-control modalInput persian" id="pwd" placeholder="رمز عبور" name="pwd">
-                       </div>
-                     </div>
-                     <div class="form-group required">
-                       <label class="control-label col-sm-3 persian" for="captcha">کد امنیتی</label>
-                       <div class="col-sm-9">
-                         <input type="password" class="form-control modalInput persian" id="captcha" placeholder="کد امنیتی" name="repass">
-                       </div>
-                     </div>
-                     <div class="form-group">
-                       <div class="col-sm-offset-3 col-sm-10">
-                         <div class="checkbox persian">
-                           <label><input type="checkbox" name="remember">قوانین را مطالعه کردم و میپذیرم</label>
-                         </div>
-                       </div>
-                     </div>
-                     <div class="form-group">
-                       <div class="sign-up-button">
-                         <button type="button persian" class="btn btn-primary">عضویت</button>
-                       </div>
-                     </div>
-                   </form>
-
-
-               </div>
-
-             </div>
-             <div class="social-login">
-              <div class="social-divider">
-               <span>یا</span>
+              {{range .movies}}
+              <div class="item">
+                  <a href="/movies/{{.Id}}/details" rel="nofollow" class="fill_href">
+                    <img class="animate lazyOwl" src="/public/posters/{{.Id}}.jpg"
+                    alt="دانلود فیلم Lazer Team 2" style="display: inline;">
+                  </a>
               </div>
-                <div class="social-button">
-                <button type="button" class="btn btn-danger">
-              ورود با حساب کاربری گوگل
-                </button>
-              </div>
-             </div>
-           </div>
+              {{end}}
 
-         </div>
-       </div>
+            </div>
+        </div>
+        <div class="owl-nav right">
+          <div class="owl-next customPrevBtn navbtn"><i class="fa fa-chevron-circle-right"></i></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Banner -->
+    <div id="banner">
+      <div class="wrapper">
+        <img src="/public/img/banner.png">
+        <div class="caption2">
+          <h3>
+                اژدها پا به هنگ‎کنگ می‌گذارد
+          </h3>
+          <h4>
+            دانی ین در نقش سلطان مواد مخدر
+          </h4>
+          <button type="button" class="btn btn-mine">
+            بلوری دانلود کنید!
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End Banner -->
+
+    <!-- hottests -->
+
+    <div id="hottest">
+      <div class="wrapper">
+        <div class="hottest-title">
+          <h4>
+            <strong>
+              داغ ترین ها
+            </strong>
+          </h4>
+        </div>
+              <div class="hot-item pupleyellow">
+                  <a href="http://iranfilm.info/movies/lazer-team-2/" rel="nofollow" class="fill_href">
+                    <div class="hImgWrapper">
+                      <img class="hot-img" src="http://media.iranfilm.info/title/tt6730898/poster_thumbnail.jpg">
+                    </div>
+                    <div class="hot-caption">
+                        <div class="little-items">
+                            <a href="#" class="selected">جنایی</a>
+                            <a href="#" class="selected">کسشر</a>
+                            <a href="#" class="selected">کیری</a>
+
+                        </div>
+                    </div>
+                  </a>
+              </div>
+
+              <div class="hot-item cyanorange">
+                <a href="http://iranfilm.info/movies/kickboxer-retaliation/" rel="nofollow" class="fill_href">
+                  <div class="hImgWrapper">
+                    <img class="hot-img" src="/public/img/1.jpg">
+                  </div>
+                  <div class="hot-caption">
+                      <div class="little-items">
+                          <a href="#" class="selected">جنایی</a>
+                          <a href="#" class="selected">کسشر</a>
+                          <a href="#" class="selected">کیری</a>
+
+                      </div>
+                      <button type="button" class="btn btn-mine-small">
+                        BlueRay
+                      </button>
+                      <button type="button" class="btn btn-mine-small">
+                        7.1 *
+                      </button>
+                  </div>
+                </a>
+              </div>
+      </div>
+    </div>
+    {{template "site-footer.html" .}}
+
+    <script src="/public/carousel/owl.carousel.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $(".owl-carousel").owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        dots: false,
+        rtl: true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+      });
+      var owl = $('.owl-carousel');
+      owl.owlCarousel();
+      // Go to the next item
+      $('.customNextBtn').click(function() {
+          owl.trigger('next.owl.carousel');
+      })
+      // Go to the previous item
+      $('.customPrevBtn').click(function() {
+          // With optional speed parameter
+          // Parameters has to be in square bracket '[]'
+          owl.trigger('prev.owl.carousel', [300]);
+      });
+
+    });
+
+
+    </script>

@@ -1,0 +1,71 @@
+{{set . "title" "Profile"}}
+{{template "header.html" .}}
+
+  {{template "site-header.html" .}}
+
+  <div class="persian main-scene">
+
+  <ul class="nav nav-tabs nav-justified main-tab">
+    <li class="active"><a href="#setting">تنظیمات</a></li>
+    <li><a href="#">خرید اشتراک</a></li>
+    <li><a href="#">سبد دانلود</a></li>
+    <li><a href="#">فیلم های مورد علاقه</a></li>
+    <li><a href="#">تیکت</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade in active">
+      <div class="setting-nav col-sm-3 right nopad">
+        <nav>
+          <ul>
+            <li class="active">ویرایش اطلاعات کاربری</li>
+            <li>تغییر رمز عبور</a></li>
+            <li>انتقال اشتراک از سایت قدیم</li>
+            <li>دعوت دوستان</li>
+          </ul>
+        </nav>
+      </div>
+      <div class="setting-form col-sm-9">
+        <section class="content-panel">
+          <div class=title-box>
+            <span class="box-head-title">شماره همراه</span>
+          </div>
+          <div class="col-xs-12 col-sm-6 settings right">
+            <div class="setting-input">
+              <input class="form-field form-control" name="ifUserSet[mobile]" value="" id="User_mobile" type="text">
+              <button type="button" class="btn btn-success btn-lg">ذخیره شماره تماس</button>
+            </div>
+          </div>
+        </section>
+        <div class="clearfix"></div>
+
+          <section class="content-panel" style="margin-top: 100px;">
+            <div class=title-box>
+              <span class="box-head-title">شماره همراه</span>
+            </div>
+            <div class="col-xs-12 col-sm-6 settings right">
+              <div class="setting-input">
+                <label class="control-label" for="Name">نام</label>
+                <input class="form-field form-control" name="ifUserSet[mobile]" value="" id="User-name" type="text">
+              </div>
+              <div class="setting-input">
+                <label class="control-label" for="Sirname">نام خانوادگی</label>
+                <input class="form-field form-control" name="ifUserSet[mobile]" value="" id="User-Sirname" type="text">
+              </div>
+              <div class="setting-input">
+                <label class="control-label" for="Nickname">نام مستعار</label>
+                <input class="form-field form-control" name="ifUserSet[mobile]" value="" id="User-Nickname" type="text">
+              </div>
+              <div class="setting-input">
+                <label class="control-label" for="Mail">ایمیل</label>
+                <input class="form-field form-control" name="ifUserSet[mobile]" value="" id="User-Mail" type="email">
+              </div>
+              <button type="button" class="btn btn-success btn-lg">به روز رسانی</button>
+            </div>
+          </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {{template "site-footer.html" .}}

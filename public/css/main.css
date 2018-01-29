@@ -31,7 +31,12 @@
   width: 50% !important;
   margin: auto !important;
 }
+.navbarmine{
+  padding-top:10px;
+  float:left;
+  width:100%;
 
+}
 .persian {
     font-family: 'Shabnam', sans-serif;
     text-align: right;
@@ -78,7 +83,7 @@ body {
   vertical-align: top;
 }
 
-input[type=text], select {
+input, select {
     display: inline;
     background-color: #f2f2f2;
     left: 0;
@@ -151,7 +156,6 @@ html {
     border-radius: 7px;
     transition: all 0.3s ease;
     font-weight: 400;
-    height: 20px;
     padding: 11px 8px;
     position: relative;
     line-height: 1.42857143;
@@ -243,10 +247,10 @@ li.kiresag a:hover:not(.active) {
 
 .content-box {
   border: 2px solid black;
-  width: auto;
+  width: 50%;
   height: auto;
   padding: 2px;
-  margin: auto;
+  margin-right: 0;
   font-size: 13px;
   color: #666;
 }
@@ -279,13 +283,11 @@ hr {
   height: 40px;
 }
 .site-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    background-color: #f3f3f3;
-}
+  float: right;
+      margin-top: 40px;
+      width: 100%;
+      color: white;
+      background-color: #f3f3f3;}
 
 .bottom {
   color: blue;
@@ -424,4 +426,9 @@ li.iran-nav a {
 
 li.iran-nav a:hover:not(.active) {
     background-color: #ddd;
+}
+
+.instagram {
+  vertical-align: middle;
+  color: red;
 }

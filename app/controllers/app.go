@@ -6,7 +6,18 @@ import (
 	//"github.com/moolica/IEProject/app/routes"
 
 	"github.com/revel/revel"
+	_ "image/jpeg"
+	_ "image/png"
+	"io/ioutil"
+	"strconv"
 	"time"
+)
+
+const (
+	_      = iota
+	KB int = 1 << (10 * iota)
+	MB
+	GB
 )
 
 type Application struct {
@@ -17,39 +28,41 @@ func (c Application) Download() revel.Result {
 	return c.Render()
 }
 
-func (c Application) Submit() revel.Result {
-	var movie models.Movie
-	c.Params.BindJSON(&movie)
-	movie.CreatedAt = time.Now().UnixNano()
+func (c Application) Profile() revel.Result {
+	return c.Render()
+}
 
-	if err := c.Txn.Insert(&movie); err != nil {
+func (c Application) Submit() revel.Result {
+
+	movie := new(models.Movie)
+	err := c.Txn.SelectOne(&movie,
+		`SELECT * FROM Movie order by id desc limit 1`)
+	if err != nil {
 		return c.RenderText(
-			"Error inserting record into database!")
-	} else {
-		return c.RenderJSON(movie)
+			err.Error())
 	}
+	return c.RenderText(strconv.Itoa(int(movie.Id)))
+
+	//	var movie models.Movie
+	//	c.Params.BindJSON(&movie)
+	//	movie.CreatedAt = time.Now().UnixNano()
+	//
+	//	if err := c.Txn.Insert(&movie); err != nil {
+	//		return c.RenderText(
+	//			"Error inserting record into database!")
+	//	} else {
+	//		return c.RenderJSON(movie)
+	//	}
 }
 
 func (c Application) Index() revel.Result {
-	count, err := c.Txn.SelectStr("select title from Movie where id=?", 2)
+	movies, err := c.Txn.Select(models.Movie{},
+		`SELECT * FROM Movie order by created_at desc limit ?`, 5)
 	if err != nil {
-		return c.RenderText(err.Error())
+		return c.RenderText(
+			err.Error())
 	}
-	return c.Render(count)
-	//	id := 1
-	/*	var movie *models.Movie
-		_, err := c.Txn.Select(&movie,
-			c.Db.SqlStatementBuilder.
-				Select("Title").
-				From("Movie").Where("Id = ?", 1))
-		if movie == nil {
-			return c.NotFound("Movie not found")
-		}
-		if err != nil {
-			panic(err)
-		}
-		return c.Render(movie.Title)
-	*/
+	return c.Render(movies)
 }
 
 func (c Application) GetMovieDetails(id int) revel.Result {
@@ -59,8 +72,7 @@ func (c Application) GetMovieDetails(id int) revel.Result {
 	if err != nil {
 		return c.RenderText("Error.  Item probably doesn't exist.")
 	}
-	return c.RenderJSON(movie)
-
+	return c.Render(movie)
 }
 
 func (c Application) GetRecentMovies(limit int) revel.Result {
@@ -70,7 +82,7 @@ func (c Application) GetRecentMovies(limit int) revel.Result {
 		return c.RenderText(
 			err.Error())
 	}
-	return c.RenderJSON(movies)
+	return c.Render(movies)
 }
 
 func (c Application) SubmitComment(id int) revel.Result {
@@ -93,8 +105,8 @@ func (c Application) GetComments(id int) revel.Result {
 		return c.RenderText(
 			err.Error())
 	}
-	return c.RenderJSON(comments)
 
+	return c.RenderJSON(comments)
 }
 
 func (c Application) getMovieById(id int) *models.Movie {
@@ -116,4 +128,54 @@ func (c Application) Search(title string) revel.Result {
 			err.Error())
 	}
 	return c.RenderJSON(movies)
+}
+
+func (c Application) UploadMovie() revel.Result {
+	return c.Render()
+}
+
+func (c *Application) HandleUpload(movieId int, movieName string, movieLength int, movieYear int, movieCountry string, movieDetails string, movieDirector string, movieAuthor string, movieStars string, movieCategory string, movieCover []byte) revel.Result { //	var movie models.Movie
+	//	movie.CreatedAt = time.Now().UnixNano()
+	//
+	//	if err := c.Txn.Insert(&movie); err != nil {
+	//		return c.RenderText(
+	//			"Error inserting record into database!")
+	//	} else {
+	//		return c.RenderJSON(movie)
+	//	}
+
+	movie := models.Movie{
+		CreatedAt:   time.Now().UnixNano(),
+		Title:       movieName,
+		Year:        int64(movieYear),
+		Length:      strconv.Itoa(movieLength),
+		Director:    movieDirector,
+		Description: movieDetails,
+	}
+
+	if err := c.Txn.Insert(&movie); err != nil {
+		return c.RenderText(
+			"Error inserting record into database!")
+	}
+
+	err := c.saveImage(movieCover)
+	if err != nil {
+		return c.RenderText("Rid")
+	}
+	return c.RenderText("Eyvallll")
+}
+
+func (c Application) Comments() revel.Result {
+	return c.Render()
+}
+
+func (c Application) saveImage(img []byte) (err error) {
+	movie := new(models.Movie)
+	err = c.Txn.SelectOne(&movie,
+		`SELECT * FROM Movie order by id desc limit 1`)
+
+	id := strconv.Itoa(int(movie.Id))
+
+	err = ioutil.WriteFile("/Users/moolica/workspace/go/src/github.com/moolica/IEProject/public/posters/"+id+".jpg", img, 0644)
+	return
 }
